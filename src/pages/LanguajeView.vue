@@ -18,8 +18,8 @@
         <div class="row q-gutter-xl">
           <!-- <q-btn size="1.5rem" color="espanol" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'es'">{{$t('esp')}}</q-btn>
           <q-btn size="1.5rem" color="portugues" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'pt'">{{$t('port')}}</q-btn> -->
-          <q-btn size="1.5rem" color="espanol" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'es'">{{sendEsp}}</q-btn>
-          <q-btn size="1.5rem" color="portugues" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'pt'">{{sendPort}}</q-btn>
+          <q-btn size="1.5rem" color="espanol" glossy rounded icon-right="play_circle" >{{sendEsp}}</q-btn>
+          <q-btn size="1.5rem" color="portugues" glossy rounded icon-right="play_circle">{{sendPort}}</q-btn>
         </div>
       <q-page-sticky position="bottom-right" :offset="[28, 24]">
         <q-btn size="1.5rem" fab icon="navigate_next" color="portugues" @click="handleNext()">
