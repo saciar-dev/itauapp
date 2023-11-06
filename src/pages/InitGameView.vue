@@ -1,8 +1,8 @@
 <template>
   <div class="bg-3">
-    <q-page class="flex flex-center column">
+    <q-page class="flex flex-center column animate__animated animate__fadeIn">
       <div class="text-h1 itau-font-blk text-white" v-if="isLoading"> {{$t('gameReady')}} </div>
-      <div class="text-h1 itau-font-blk text-white" style="font-size: 15rem;" v-else> {{count}}</div>
+      <div class="text-h1 itau-font-blk text-white animate__animated animate__bounceIn animate__repeat-3" style="font-size: 15rem;" v-else> {{count}}</div>
       <h1 class="itau-font"></h1>
 
     <q-page-sticky position="bottom-right" :offset="[885, 108]">
@@ -21,6 +21,7 @@
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useQuestionStore } from 'src/stores/question-store';
+import 'animate.css';
 
 const router = useRouter();
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-3 row " style="height: 100vh;" v-if="!showAnwserResult">
+  <div class="bg-3 row animate__animated animate__fadeIn" style="height: 100vh;" v-if="!showAnwserResult">
     <div class="col-3 self-center" >
       <div class="row justify-center ">
         <q-circular-progress
@@ -19,17 +19,17 @@
       </div>
       <div class="row q-my-md justify-center">
         <div class="q-pa-md">
-    <div class="q-gutter-y-md column">
-      <q-rating
-        v-model="score"
-        size="4em"
-        color="primary"
-        icon="star_border"
-        icon-selected="star"
-        disable
-      />
-    </div>
-  </div>
+          <div class="q-gutter-y-md column">
+            <q-rating
+              v-model="score"
+              size="4em"
+              color="primary"
+              icon="star_border"
+              icon-selected="star"
+              disable
+            />
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-9 self-center q-pr-xl " style="padding-right: 10em;" >
@@ -51,6 +51,7 @@
       </div>
     </div>
   </div>
+
   <div class="bg-2 col flex flex-center" style="height: 100vh;" v-else>
     <div class="text-center" v-if="showCorrect">
       <div class="text-h1 itau-font-blk q-pb-xl">{{$t('msg_correct')}}</div>
@@ -94,6 +95,7 @@ import { onMounted, ref } from 'vue';
 import { useQuestionStore } from '../stores/question-store'
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
+import 'animate.css';
 
 const { randomQuestion } = storeToRefs(useQuestionStore())
 

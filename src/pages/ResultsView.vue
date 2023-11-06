@@ -22,14 +22,19 @@
 import { useRouter } from 'vue-router';
 import { useQuestionStore } from 'src/stores/question-store';
 import { useUserStore } from 'src/stores/user-store';
+import {api} from 'boot/axios';
 
 const { clearRandomQuestions } = useQuestionStore();
 const { resetUsuario } = useUserStore()
 const router = useRouter();
 
+const { usuario } = useUserStore();
+
 const handleHome = () => {
   localStorage.removeItem('user');
   localStorage.removeItem('result');
+
+  saveUser();
 
   clearRandomQuestions();
   resetUsuario();
@@ -37,6 +42,21 @@ const handleHome = () => {
   }
 
   const showResult = localStorage.getItem('result');
+
+  const saveUser = () => {
+    const dato = {
+      "nombre": usuario.nombre,
+      "email": usuario.email,
+      "telefono": usuario.telephone,
+      "correctas": showResult
+    }
+
+
+    api.post('/usuario', dato)
+    .then(response => {
+      console.log(response);
+    })
+  }
 
 </script>
 

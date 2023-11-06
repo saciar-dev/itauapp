@@ -1,6 +1,6 @@
 <template>
   <div class="bg-2 ">
-    <q-page class="flex flex-center column ">
+    <q-page class="flex flex-center column animate__animated animate__fadeIn">
       <q-page-sticky position="bottom-right" :offset="[28, 780]">
         <img
           alt="Itau logo"
@@ -11,16 +11,19 @@
       </q-page-sticky>
         <div class="row q-pb-lg">
           <div class="col-12">
-            <div class="text-h2 itau-font-blk">{{$t('init')}}</div>
+            <!-- <div class="text-h2 itau-font-blk">{{$t('init')}}</div> -->
+            <div class="text-h2 itau-font-blk">{{sendInit}}</div>
           </div>
         </div>
         <div class="row q-gutter-xl">
-          <q-btn size="1.5rem" color="espanol" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'es'">{{$t('esp')}}</q-btn>
-          <q-btn size="1.5rem" color="portugues" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'pt'">{{$t('port')}}</q-btn>
+          <!-- <q-btn size="1.5rem" color="espanol" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'es'">{{$t('esp')}}</q-btn>
+          <q-btn size="1.5rem" color="portugues" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'pt'">{{$t('port')}}</q-btn> -->
+          <q-btn size="1.5rem" color="espanol" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'es'">{{sendEsp}}</q-btn>
+          <q-btn size="1.5rem" color="portugues" glossy rounded icon-right="play_circle" @click="$i18n.locale = 'pt'">{{sendPort}}</q-btn>
         </div>
       <q-page-sticky position="bottom-right" :offset="[28, 24]">
         <q-btn size="1.5rem" fab icon="navigate_next" color="portugues" @click="handleNext()">
-          <q-tooltip anchor="bottom left" self="top middle" :offset="[10, 10]" class="bg-portugues text-subtitle2 text-center">{{$t('next')}}</q-tooltip>
+          <q-tooltip anchor="bottom left" self="top middle" :offset="[10, 10]" class="bg-portugues text-subtitle2 text-center">{{sendNext}}</q-tooltip>
         </q-btn>
       </q-page-sticky>
     </q-page>
@@ -30,10 +33,11 @@
 <script setup>
   import { useRouter } from 'vue-router';
   import { useI18n } from 'vue-i18n';
-  import { onMounted } from 'vue';
+  import { onMounted, computed } from 'vue';
+  import 'animate.css';
 
   const router = useRouter();
-  const { locale } = useI18n({ useScope: 'global' });
+  const { locale, t } = useI18n({ useScope: 'global' });
 
   const handleNext = () =>{
     localStorage.setItem('language', locale.value)
@@ -43,6 +47,11 @@
   onMounted(()=>{
     locale.value = localStorage.getItem('language');
   })
+
+  const sendInit = computed(() => t('init'));
+  const sendEsp = computed(() => t('esp'));
+  const sendPort = computed(() => t('port'));
+  const sendNext = computed(() => t('next'));
 
 </script>
 

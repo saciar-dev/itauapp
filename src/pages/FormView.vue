@@ -1,6 +1,6 @@
 <template>
   <div class="bg-2">
-  <q-page class="flex flex-center column">
+  <q-page class="flex flex-center column animate__animated animate__fadeIn">
     <q-page-sticky position="bottom-right" :offset="[28, 780]">
       <img
         alt="Itau logo"
@@ -79,6 +79,7 @@
   import { onBeforeMount, ref} from 'vue'
   import { useUserStore } from 'src/stores/user-store';
   import { useI18n } from 'vue-i18n';
+  import 'animate.css';
 
   import { useRouter } from 'vue-router';
 
