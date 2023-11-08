@@ -70,11 +70,13 @@
       </div>
     </q-form>
 
-    <SimpleKeyboard :lang="locale" @onChange="onNameChange" @onKeyPress="onNameKeyPress" :input="name" v-if="showNameKeyboard"></SimpleKeyboard>
-    <SimpleKeyboard :lang="locale" @onChange="onEmailChange" @onKeyPress="onEmailKeyPress" :input="email" v-if="showEmailKeyboard"></SimpleKeyboard>
-    <SimpleKeyboard :lang="locale" @onChange="onTelephoneChange" @onKeyPress="onTelephoneKeyPress" :input="telephone" v-if="showTelephoneKeyboard"></SimpleKeyboard>
+    <!-- <SimpleKeyboard style="width: 100%;" :lang="locale" @onChange="onNameChange" @onKeyPress="onNameKeyPress" :input="name" v-if="showNameKeyboard"></SimpleKeyboard> -->
+
 
   </div>
+  <SimpleKeyboard style="width: 75%;" :lang="locale" @onChange="onNameChange" @onKeyPress="onNameKeyPress" :input="name" v-if="showNameKeyboard"></SimpleKeyboard>
+  <SimpleKeyboard style="width: 75%;" :lang="locale" @onChange="onEmailChange" @onKeyPress="onEmailKeyPress" :input="email" v-if="showEmailKeyboard"></SimpleKeyboard>
+  <SimpleKeyboard style="width: 75%;" :lang="locale" @onChange="onTelephoneChange" @onKeyPress="onTelephoneKeyPress" :input="telephone" v-if="showTelephoneKeyboard"></SimpleKeyboard>
 </q-page>
 </div>
 </template>

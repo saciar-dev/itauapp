@@ -32,6 +32,7 @@ export default {
         onChange: this.onChange,
         onKeyPress: this.onKeyPress,
         theme: "simple-keyboard hg-theme-default hg-layout-default",
+
         ...layoutEsp
       });
     }
@@ -75,4 +76,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hg-theme-default {
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
 </style>
