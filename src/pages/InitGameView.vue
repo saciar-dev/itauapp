@@ -2,7 +2,7 @@
   <div class="bg-3">
     <q-page class="flex flex-center column animate__animated animate__fadeIn">
       <div class="text-h1 itau-font-blk text-white" v-if="isLoading"> {{$t('gameReady')}} </div>
-      <div class="text-h1 itau-font-blk text-white animate__animated animate__bounceIn animate__repeat-3" style="font-size: 15rem;" v-else> {{count}}</div>
+      <div class="text-h1 itau-font-blk text-white animate__animated animate__bounce animate__repeat-3 " style="font-size: 15rem;" v-else> {{count}}</div>
       <h1 class="itau-font"></h1>
 
     <q-page-sticky position="bottom-right" :offset="[885, 108]">

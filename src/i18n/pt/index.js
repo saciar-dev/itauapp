@@ -18,6 +18,9 @@ export default {
   telephone:'Telefone',
   acept: 'Aceitar',
   reset: 'Excluir',
+  errorData: 'Você deve completar os dados',
+  errorDisclaimer: 'Você deve aceitar os Termos e Condições',
+  errorDuplicate: 'Usuário com e-mail e telefone já utilizado!',
 
     //game
   gameReady: 'Vamos começar',

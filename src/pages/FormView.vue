@@ -79,13 +79,15 @@
   import { onBeforeMount, ref} from 'vue'
   import { useUserStore } from 'src/stores/user-store';
   import { useI18n } from 'vue-i18n';
+  import {api} from 'boot/axios';
+  import { Notify } from 'quasar'
   import 'animate.css';
 
   import { useRouter } from 'vue-router';
 
   const router = useRouter();
 
-  const { locale } = useI18n({ useScope: 'global' });
+  const { locale, t } = useI18n({ useScope: 'global' });
 
   const name = ref(null)
   const telephone = ref(null)
@@ -100,22 +102,63 @@
 
   const onSubmit = () => {
 
-    if(name.value != null && telephone.value !=null && email.value!=null){
-      setUsuario({
-        nombre:name.value,
-        telephone: telephone.value,
-        email:email.value,
-        aceptar:accept.value
-      })
-      localStorage.setItem('user', JSON.stringify({
-        nombre:name.value,
-        telephone: telephone.value,
-        email:email.value,
-        aceptar:accept.value
-      }));
+    if(name.value != null && telephone.value !=null && email.value!=null && accept.value){
+      // if(checkUser()){
+      //   setUsuario({
+      //     nombre:name.value,
+      //     telephone: telephone.value,
+      //     email:email.value,
+      //     aceptar:accept.value
+      //   });
+      //   localStorage.setItem('user', JSON.stringify({
+      //     nombre:name.value,
+      //     telephone: telephone.value,
+      //     email:email.value,
+      //     aceptar:accept.value
+      //   }));
 
-      router.push('/initGame')
+      //   router.push('/initGame')
+      // }
+      // else{
+      //   Notify.create('Usuario con email y telefono ya utilizados!')
+      // }
+      checkUser();
+
     }
+    else if(!accept.value){
+      Notify.create(t('errorDisclaimer'))
+    }
+    else{
+      Notify.create(t('errorData'))
+    }
+
+  }
+
+  const checkUser = () =>{
+    api.get(`/usuario?email=${email.value}&telefono=${telephone.value}`)
+    .then(response => {
+      console.log(response);
+      if(response.status == 204){
+        setUsuario({
+          nombre:name.value,
+          telephone: telephone.value,
+          email:email.value,
+          aceptar:accept.value
+        });
+        localStorage.setItem('user', JSON.stringify({
+          nombre:name.value,
+          telephone: telephone.value,
+          email:email.value,
+          aceptar:accept.value
+        }));
+
+        router.push('/initGame')
+      }
+      else{
+        Notify.create(t('errorDuplicate'))
+      }
+    })
+
   }
 
   const onReset = () => {

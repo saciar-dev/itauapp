@@ -5,7 +5,7 @@
         <q-circular-progress
           :value="countDown"
           :show-value="true"
-          :max="10"
+          :max="15"
           :thickness="1"
           color="primary"
           class="text-white itau-font-bd "
@@ -60,6 +60,7 @@
           src="~assets/contento.svg"
           style="width: 150px; height: 150px"
           @click="init"
+          class="animate__animated animate__bounce animate__infinite"
         >
     </div>
     <div class="text-center" v-else>
@@ -69,6 +70,7 @@
           src="~assets/triste.svg"
           style="width: 150px; height: 150px"
           @click="init"
+          class="animate__animated animate__hinge animate__slower"
         >
     </div>
   </div>
@@ -105,7 +107,7 @@ const currentQuestion = ref(0);
 const showAnwserResult = ref(false);
 const showCorrect = ref(false);
 const score = ref(0);
-const countDown = ref(10);
+const countDown = ref(15);
 const timer = ref(null);
 const startQuiz = ref(false);
 
@@ -129,7 +131,7 @@ const startQuiz = ref(false);
       let nextQuestion = currentQuestion.value + 1;
       if(nextQuestion < randomQuestion.value.length){
         currentQuestion.value = nextQuestion;
-        countDown.value = 10;
+        countDown.value = 15;
         countDownTimer();
       }
       else{
