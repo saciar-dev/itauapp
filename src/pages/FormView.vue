@@ -9,6 +9,11 @@
         @click="init"
       >
       </q-page-sticky>
+      <q-page-sticky position="bottom-left" :offset="[28, 24]">
+        <q-btn size="1.5rem" fab icon="navigate_before" color="portugues" @click="handleBack()">
+          <q-tooltip anchor="bottom left" self="top middle" :offset="[10, 10]" class="bg-portugues text-subtitle2 text-center">{{$t('next')}}</q-tooltip>
+        </q-btn>
+      </q-page-sticky>
     <div class="text-h3 q-pb-md itau-font-blk">{{$t('formTitle')}}</div>
   <div class="q-pa-xs " style="width: 50rem;">
     <q-form
@@ -159,6 +164,11 @@
       }
     })
 
+  }
+
+  const handleBack = () =>{
+    onReset();
+    router.push('/lang')
   }
 
   const onReset = () => {
